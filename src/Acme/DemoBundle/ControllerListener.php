@@ -9,6 +9,7 @@ use Acme\DemoBundle\Twig\Extension\DemoExtension;
 
 class ControllerListener
 {
+	
     protected $extension;
 
     public function __construct(DemoExtension $extension)
