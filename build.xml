@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+    name="picweek"
+    default="build" >
+
+    <target
+        name="build"
+        depends="phpunit" />
+
+    <target
+        name="phpunit"
+        description="Run unit tests with PHPUnit" >
+
+        <exec
+            executable="phpunit -c app"
+            failonerror="true" />
+    </target>
+</project>
