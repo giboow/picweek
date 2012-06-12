@@ -11,6 +11,7 @@ class ControllerListener
 {
     protected $extension;
 
+    
     public function __construct(DemoExtension $extension)
     {
         $this->extension = $extension;
