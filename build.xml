@@ -135,7 +135,7 @@
 
             <arg line="--report=checkstyle
                  --report-file=${basedir}/build/logs/checkstyle.xml
-                 --standard=PEAR
+                 --standard=Symfony2
                  --extensions=php
                  ${source}" />
         </exec>
