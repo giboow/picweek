@@ -4,8 +4,16 @@ namespace Picweek\Bundle\MainBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * Picweek/Bundle/MainBundle/DefaultController testcase
+ * @author Philippe Gibert
+ * @since 0.1
+ */
 class DefaultControllerTest extends WebTestCase
 {
+	/**
+	 * Test Index action
+	 */
     public function testIndex()
     {
         $client = static::createClient();
