@@ -8,8 +8,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 /**
  * Main controller
  * 
- * @author 		Philippe Gibert
- * @since		0.1
+ * @author Philippe Gibert <philippe.gibert@gmail.com>
+ * @since  0.1
  */
 class DefaultController extends Controller
 {

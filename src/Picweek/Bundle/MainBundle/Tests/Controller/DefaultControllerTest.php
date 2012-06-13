@@ -6,8 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
  * Picweek/Bundle/MainBundle/DefaultController testcase
- * @author Philippe Gibert
- * @since 0.1
+ * @author Philippe Gibert <philippe.gibert@gmail.com>
+ * @since  0.1
  */
 class DefaultControllerTest extends WebTestCase
 {
