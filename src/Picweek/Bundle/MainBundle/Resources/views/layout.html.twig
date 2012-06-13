@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="{{ asset('bundles/myapp/css/main.css') }}" type="text/css" media="all" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    
+    <title>Picweek {% block title %}{% endblock %}</title>
+    </head>
+    <body>
+    	<header>
+    		<div id="title">Picweek</div>
+    		
+    		<nav>
+    			<ul>
+    				<li><a href="">Accueil</a></li>
+    				<li><a href="">Recherche</a></li>
+    				<li><a href="">Ajouter</a></li>
+    				<li><a href="">Contact</a></li>
+    			</ul>
+    		</nav>
+    	</header>    	
+    	<div id="content">
+    		{% block content %}
+        	{% endblock %}
+        </div>
+        
+        <footer>
+        	copirygth {{ "now"|date("Y") }}
+        </footer>
+    </body>
+</html>
