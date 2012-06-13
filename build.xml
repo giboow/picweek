@@ -138,6 +138,7 @@
                  --standard=Symfony2
                  --extensions=php
                  ${source}" />
+            
         </exec>
     </target>
 
