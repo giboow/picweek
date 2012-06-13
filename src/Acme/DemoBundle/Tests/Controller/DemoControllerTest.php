@@ -14,4 +14,11 @@ class DemoControllerTest extends WebTestCase
 
         $this->assertTrue($crawler->filter('html:contains("Hello Fabien")')->count() > 0);
     }
+    
+    public function testContact()
+    {
+    	$client = static::createClient();
+    	$crawler = $client->request('GET', '/demo/contact');
+    	$this->assertTrue($crawler->filter('html:contains("Email")')->count() > 0);
+    }
 }
