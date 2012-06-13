@@ -1,6 +1,7 @@
-_welcome:
-    pattern:  /
-    defaults: { _controller: PicweekMainBundle:Default:Index }
+_wdt:
+    resource: "@WebProfilerBundle/Resources/config/routing/wdt.xml"
+    prefix:   /_wdt
+
 
 _main:
     resource: routing.yml

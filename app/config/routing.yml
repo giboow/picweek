@@ -1,7 +1,7 @@
-PicweekMainBundle:
-    resource: "@PicweekMainBundle/Controller/"
-    type:     annotation
-    prefix:   /
+_welcome:
+    pattern:  /
+    defaults: { _controller: PicweekMainBundle:Default:Index }
+
 
 # Internal routing configuration to handle ESI
 #_internal:
