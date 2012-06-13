@@ -7,7 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 /**
  * Main controller
- * 
+ *
  * @author Philippe Gibert <philippe.gibert@gmail.com>
  * @since  0.1
  */
@@ -15,7 +15,7 @@ class DefaultController extends Controller
 {
     /**
      * Render main page
-     * 
+     *
      * @Route("/")
      * @Template()
      * @return array
