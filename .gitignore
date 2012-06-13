@@ -3,3 +3,4 @@
 /.settings
 /app/cache
 /vendor
+/.externalToolBuilders
