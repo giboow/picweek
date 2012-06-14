@@ -90,7 +90,7 @@ class Place
     private $comments;
 
     /**
-     * Constructeur
+     * Constructor
      *
      */
     public function __construct()
@@ -318,6 +318,16 @@ class Place
     public function setComments(\Doctrine\Common\Collections\Collection $comments)
     {
         $this->comments = $comments;
+    }
+
+    /**
+     * Convert to string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName();
     }
 
 }

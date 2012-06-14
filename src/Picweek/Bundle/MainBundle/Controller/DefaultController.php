@@ -25,4 +25,19 @@ class DefaultController extends Controller
     {
         return array();
     }
+
+    /**
+     * Render place page
+     * @param integer $id
+     *
+     * @return array
+     * @Route("/get/{id}", name="_get")
+     * @Template()
+     */
+    public function placeAction($id)
+    {
+        $place = $this->getDoctrine()->getRepository('PicweekMainBundle:Picnic\Place')->find($id);
+
+        return array("place" => $place);
+    }
 }

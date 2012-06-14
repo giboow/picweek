@@ -1,0 +1,12 @@
+{% extends "PicweekMainBundle::layout.html.twig" %}
+
+{% block content %}
+<div class="place">
+    <div class="title">name : {{ place.name }}</div>
+    <div class="address">addresse : {{ place.address }}</div>
+    <div class="latitude">latitude : {{ place.latitude }}</div>
+    <div class="longitude">longitude : {{ place.longitude }}</div>
+    <div class="info">info : {{ place.info }}</div>
+    {{ place }}
+</div>
+{% endblock %}
