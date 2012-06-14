@@ -17,8 +17,16 @@
     </head>
     <body>
         <header>
-            <div id="title">Picweek</div>
-
+            <div id="main">
+                <div class="title">Picweek</div>
+                <div class="connect">&rarr; Connection</div>
+            </div>
+            <div class="clear"></div>
+            <div id="subtitle">
+                Géolocalisation de coins Pique-Nique
+            </div>
+        </header>
+        <div id="middle">
             <nav>
                 <ul>
                     <li><a href="">Accueil</a></li>
@@ -27,14 +35,14 @@
                     <li><a href="">Contact</a></li>
                 </ul>
             </nav>
-        </header>
-        <div id="content">
-        {% block content %}
-        {% endblock %}
+            <div id="content">
+            {% block content %}
+            {% endblock %}
+            </div>
         </div>
 
         <footer>
-            <div id="copyright">copirygth {{ "now"|date("Y") }}</div>
+            <div id="copyright" class="clear">Copirygth &copy;{{ "now"|date("Y") }} Picweek. All Rights Reserverd.</div>
         </footer>
         {% block javascripts %}
         {% endblock %}

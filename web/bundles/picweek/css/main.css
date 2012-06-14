@@ -1,27 +1,62 @@
 @CHARSET "UTF-8";
 
-#content {
-    border: solid 1px;
+/* Reset */
+* { margin:0; padding:0; }
+
+/* Utils */
+.clear{
+    clear: both;
+    margin:0; padding:0;
 }
 
-body
-{
-    margin : 0;
-    padding : 0;
-}
-
-body header {
+/* Style */
+body header #main{
     border : solid 1px red;
+    height : 50px;
 }
 
-body header ul {
-    list-style: none;
+body header #main .title {
+    float : left;
 }
 
-body header li {
-    display: inline;
+body header #main .connect {
+    text-align: right;
+}
+
+body header #subtitle {
+    height : 70px;
+    text-align: center;
+    border : solid 1px blue;
 }
 
 body footer #copyright {
     text-align: center;
+    padding-top: 10px;
+    padding-bottom: 100px;
+    min-height: 250px;
+    font-size: 12px;
 }
+
+#middle {
+    margin: 0 auto;
+    margin-top: 35px;
+    position: relative;
+    vertical-align: middle;
+    border: solid 1px;
+    min-height: 250px;
+    width: 955px;
+}
+
+#middle nav {
+    height: 34px;
+    border: solid 1px;
+}
+
+#middle nav ul {
+    list-style: none;
+}
+
+#middle nav li {
+    display: inline;
+}
+
