@@ -2,31 +2,41 @@
 <html>
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="{{ asset('bundles/myapp/css/main.css') }}" type="text/css" media="all" />
+    {% block stylesheets %}
+
+    <link rel="stylesheet" href="{{ asset('bundles/picweek/css/main.css') }}" type="text/css" media="all" />
+    {% endblock %}
+
+    {% block headJavascripts %}
+
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-    
+    <script src="{{ asset('bundles/picweek/js/main.js') }}" type="text/javascript"></script>
+    {% endblock %}
+
     <title>Picweek {% block title %}{% endblock %}</title>
     </head>
     <body>
-    	<header>
-    		<div id="title">Picweek</div>
-    		
-    		<nav>
-    			<ul>
-    				<li><a href="">Accueil</a></li>
-    				<li><a href="">Recherche</a></li>
-    				<li><a href="">Ajouter</a></li>
-    				<li><a href="">Contact</a></li>
-    			</ul>
-    		</nav>
-    	</header>    	
-    	<div id="content">
-    		{% block content %}
-        	{% endblock %}
+        <header>
+            <div id="title">Picweek</div>
+
+            <nav>
+                <ul>
+                    <li><a href="">Accueil</a></li>
+                    <li><a href="">Recherche</a></li>
+                    <li><a href="">Ajouter</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div id="content">
+            {% block content %}
+            {% endblock %}
         </div>
-        
+
         <footer>
-        	copirygth {{ "now"|date("Y") }}
+            <div id="copyright">copirygth {{ "now"|date("Y") }}</div>
         </footer>
+        {% block javascripts %}
+        {% endblock %}
     </body>
 </html>
