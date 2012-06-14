@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+
+#content {
+    border: solid 1px;
+}
+
+body
+{
+    margin : 0;
+    padding : 0;
+}
+
+body header {
+    border : solid 1px red;
+}
+
+body header ul {
+    list-style: none;
+}
+
+body header li {
+    display: inline;
+}
+
+body footer #copyright {
+    text-align: center;
+}

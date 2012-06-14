@@ -42,13 +42,16 @@
 
 
 {% block content %}
-<div class="place">
-    <div id="gmap"></div>
-    <div class="title">name : {{ place.name }}</div>
-    <div class="address">addresse : {{ place.address }}</div>
-    <div class="latitude">latitude : {{ place.latitude }}</div>
-    <div class="longitude">longitude : {{ place.longitude }}</div>
-    <div class="info">info : {{ place.info }}</div>
-    {{ place }}
-</div>
+
+    <div class="place">
+        <div id="gmap"></div>
+        <div class="title">name : {{ place.name }} </div>
+        <div class="address">
+            addresse : {{ place.address }}
+        </div>
+        <div class="latitude">latitude : {{ place.latitude }} </div>
+        <div class="longitude">longitude : {{ place.longitude }} </div>
+        <div class="info">info : {{ place.info }}</div>
+    </div>
+
 {% endblock %}
