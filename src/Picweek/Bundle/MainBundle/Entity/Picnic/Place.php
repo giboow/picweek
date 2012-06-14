@@ -2,6 +2,8 @@
 
 namespace Picweek\Bundle\MainBundle\Entity\Picnic;
 
+use Picweek\Bundle\MainBundle\Entity\Picnic\Place\Comment;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -293,9 +295,9 @@ class Place
     /**
      * Add comments
      *
-     * @param Picnic\Place\Comment $comments
+     * @param Picweek\Bundle\MainBundle\Entity\Picnic\Place\Comment $comments
      */
-    public function addComment(\Picnic\Place\Comment $comments)
+    public function addComment(Comment $comments)
     {
         $this->comments[] = $comments;
     }
