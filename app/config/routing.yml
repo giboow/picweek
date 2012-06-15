@@ -8,6 +8,7 @@ _place:
     prefix:   /place
 
 
+
 # Internal routing configuration to handle ESI
 #_internal:
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"

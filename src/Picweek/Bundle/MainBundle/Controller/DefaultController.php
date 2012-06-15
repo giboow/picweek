@@ -31,13 +31,29 @@ class DefaultController extends Controller
      * @param integer $id
      *
      * @return array
-     * @Route("/get/{id}", name="_get")
+     * @Route("/get/{id}", name="_place")
      * @Template()
      */
     public function placeAction($id)
     {
-        $place = $this->getDoctrine()->getRepository('PicweekMainBundle:Picnic\Place')->find($id);
+        $place = $this->getDoctrine()
+                        ->getRepository('PicweekMainBundle:Picnic\Place')->find($id);
 
         return array("place" => $place);
+    }
+
+    /**
+     * Get number of picnic places
+     *
+     * @return array
+     * @Route("/count", name="_places_count")
+     * @Template()
+     */
+    public function countAction()
+    {
+        $count = $this->getDoctrine()
+                        ->getRepository('PicweekMainBundle:Picnic\Place')->count();
+
+        return array('count' => $count);
     }
 }

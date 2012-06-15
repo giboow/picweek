@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Picweek\Bundle\MainBundle\Entity\Picnic\Place
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Picweek\Bundle\MainBundle\Entity\Picnic\PlaceRepository")
  */
 class Place
 {

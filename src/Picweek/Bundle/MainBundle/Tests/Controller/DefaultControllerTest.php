@@ -48,8 +48,8 @@ class DefaultControllerTest extends WebTestCase
         $place->setParking(true);
 
         $placeFinder = \Mockery::mock(
-            '\Doctrine\ORM\EntityRepository',
-            array('find' => $place)
+            '\Picweek\Bundle\MainBundle\Entity\Picnic\PlaceRepository',
+            array('find' => $place, 'count' => 1)
         );
 
         $repo =  \Mockery::mock(

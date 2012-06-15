@@ -29,12 +29,14 @@
         <div id="middle">
             <nav>
                 <ul>
-                    <li><a href="">Accueil</a></li>
                     <li><a href="">Recherche</a></li>
                     <li><a href="">Ajouter</a></li>
                     <li><a href="">Contact</a></li>
                 </ul>
             </nav>
+
+            <div id="nbPlaces">Nombre d'emplacement enregistrés : {% render "PicweekMainBundle:Default:count" %}</div>
+
             <div id="content">
             {% block content %}
             {% endblock %}
