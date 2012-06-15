@@ -3,7 +3,7 @@ _welcome:
     defaults: { _controller: PicweekMainBundle:Default:Index }
 
 _place:
-    resource: "@PicweekMainBundle/Controller/DefaultController.php"
+    resource: "@PicweekMainBundle/Controller/PlaceController.php"
     type:     annotation
     prefix:   /place
 
