@@ -66,4 +66,12 @@
     git=https://github.com/padraic/mockery.git
     target=mockery
 
+[PagerFanta]
+    git=http://github.com/whiteoctober/Pagerfanta.git
+    target=pagerfanta
+
+[PagerFantaBundle]
+    git=http://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git
+    target=bundles/WhiteOctober/PagerfantaBundle
+    version=origin/symfony2.0
 
