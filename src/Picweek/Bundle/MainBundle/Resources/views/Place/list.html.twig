@@ -2,9 +2,16 @@
 
 {% block content %}
 
+    <table border=1>
     {% for data in paginator.currentPageResults %}
-        <li>{{ data }}</li>
+        <tr>
+            <td>{{ data.getName() }}</td>
+            <td>{{ data.getAddress() }}</td>
+            <td>{{ data.getLongitude() }}</td>
+            <td>{{ data.getLatitude() }}</td>
+        </tr>
     {% endfor %}
+    </table>
     {{ pagerfanta(paginator, 'default', pagerfanta_opts) }}
 
 {% endblock %}
