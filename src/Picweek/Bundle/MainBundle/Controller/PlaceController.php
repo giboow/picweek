@@ -1,6 +1,14 @@
 <?php
-
 namespace Picweek\Bundle\MainBundle\Controller;
+
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
+use Pagerfanta\Exception\OutOfRangeCurrentPageException;
+
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+
+
+use Pagerfanta\Pagerfanta;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -28,6 +36,10 @@ class PlaceController extends Controller
         $place = $this->getDoctrine()
                         ->getRepository('PicweekMainBundle:Picnic\Place')->find($id);
 
+        if ($place === null) {
+            throw new NotFoundHttpException();
+        }
+
         return array("place" => $place);
     }
 
@@ -45,4 +57,31 @@ class PlaceController extends Controller
 
         return array('count' => $count);
     }
+
+    /**
+     * Get places list
+     * @return array
+     * @Route("/list", name="_place_list")
+     * @Template()
+     */
+    public function listAction()
+    {
+        $em = $this->get('doctrine')->getEntityManager();
+        /* @var $em \Doctrine\ORM\EntityManager */
+        $query = $em->createQuery('SELECT p FROM PicweekMainBundle:Picnic\Place p');
+        $paginator = new Pagerfanta(new DoctrineORMAdapter($query));
+        $paginator->setMaxPerPage(10);
+        try {
+            $request = $this->getRequest();
+            $paginator->setCurrentPage($request->query->get('page', 1));
+        } catch (OutOfRangeCurrentPageException $e) {
+            throw new NotFoundHttpException();
+        }
+
+
+        return array(
+            'paginator' => $paginator,
+        );
+    }
+
 }

@@ -1,0 +1,10 @@
+{% extends "PicweekMainBundle::layout.html.twig" %}
+
+{% block content %}
+
+    {% for data in paginator.currentPageResults %}
+        <li>{{ data }}</li>
+    {% endfor %}
+    {{ pagerfanta(paginator, 'default', pagerfanta_opts) }}
+
+{% endblock %}
