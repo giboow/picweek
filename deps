@@ -75,3 +75,7 @@
     target=bundles/WhiteOctober/PagerfantaBundle
     version=origin/symfony2.0
 
+[AnchovyCURLBundle]
+    git=https://github.com/Iman/AnchovyCURLBundle.git
+    target=/bundles/Anchovy/CURLBundle
+

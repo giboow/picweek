@@ -1,6 +1,7 @@
 <?php
 namespace Picweek\Bundle\MainBundle\Controller;
 
+use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Pagerfanta\Exception\NotValidCurrentPageException;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
@@ -88,9 +89,21 @@ class PlaceController extends Controller
     public function mapAction()
     {
         $request = $this->getRequest();
-        $lat = $request->get('lat', 48.869232);//47.661457;
-        $long = $request->get('long', 2.356453);//-2.864399;
-        $radius = $request->get('radius', 0);//600;
+        $lat = $request->get('lat');
+        $long = $request->get('long');
+        $radius = $request->get('radius', 30);
+
+        if ($address = $request->get('address')) {
+            $url = "http://maps.googleapis.com/maps/api/geocode/json?address=" . urlencode($address) . "&sensor=false";
+            $datas = json_decode($this->get('anchovy.curl')->setURL($url)->execute());
+            if ($datas->status === 'OK') {
+                $result = $datas->results[0];
+                $location = $result->geometry->location;
+                $lat = $location->lat;
+                $long = $location->lng;
+            }
+        }
+
         $datasNear = $this->getDoctrine()
             ->getRepository('PicweekMainBundle:Picnic\Place')->searchNear($lat, $long, $radius);
 

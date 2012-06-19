@@ -18,12 +18,13 @@
 
         var positionCenter = new google.maps.LatLng("{{ latitude }}", "{{ longitude }}");
 
+        zoom = 10;
         var myOptions = {
             center: positionCenter,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             streetViewControl: false,
             panControl: false,
-            zoom: 10,
+            zoom: zoom,
         };
 
         var map = new google.maps.Map(
@@ -31,7 +32,6 @@
         );
 
         {% for place in places %}
-
             var positionPlace = new google.maps.LatLng("{{ place.latitude }}", "{{ place.longitude }}");
 
             new google.maps.Marker({
