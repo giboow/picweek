@@ -1,0 +1,49 @@
+{% extends "PicweekMainBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style type="text/css">
+        #gmap{
+            width : 400px;
+            height: 300px;
+        }
+    </style>
+{% endblock %}
+
+{% block headJavascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" >
+    $(document).ready(function(){
+
+        var positionCenter = new google.maps.LatLng("{{ latitude }}", "{{ longitude }}");
+
+        var myOptions = {
+            center: positionCenter,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            streetViewControl: false,
+            panControl: false,
+            zoom: 10,
+        };
+
+        var map = new google.maps.Map(
+            document.getElementById('gmap'), myOptions
+        );
+
+        {% for place in places %}
+
+            var positionPlace = new google.maps.LatLng("{{ place.latitude }}", "{{ place.longitude }}");
+
+            new google.maps.Marker({
+                animation : google.maps.Animation.DROP,
+                map: map,
+                position: positionPlace
+            });
+        {% endfor %}
+    });
+    </script>
+{% endblock     %}
+
+{% block content %}
+    <div id="gmap"></div>
+{% endblock %}

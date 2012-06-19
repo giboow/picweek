@@ -5,7 +5,7 @@
     <table border=1>
     {% for data in paginator.currentPageResults %}
         <tr>
-            <td>{{ data.getName() }}</td>
+            <td><a href="{{ path('_place_get',{ "id": data.id }) }}">{{ data.getName() }}</a></td>
             <td>{{ data.getAddress() }}</td>
             <td>{{ data.getLongitude() }}</td>
             <td>{{ data.getLatitude() }}</td>
