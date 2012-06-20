@@ -34,11 +34,19 @@
         {% for place in places %}
             var positionPlace = new google.maps.LatLng("{{ place.latitude }}", "{{ place.longitude }}");
 
-            new google.maps.Marker({
+            var marker = new google.maps.Marker({
                 animation : google.maps.Animation.DROP,
                 map: map,
                 position: positionPlace
             });
+
+            var infowindow = new google.maps.InfoWindow();
+            infowindow.setContent("<b><a href=\"{{ path('_place_get',{ "id": place.id }) }}\">{{ place }} :</a></b><br/>{{ place.address|nl2br }}<br/>Distance : {{ dists[place.id] }} ");
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.open(map, marker);
+            });
+
+
         {% endfor %}
     });
     </script>
