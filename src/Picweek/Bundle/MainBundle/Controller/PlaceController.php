@@ -104,8 +104,12 @@ class PlaceController extends Controller
             }
         }
 
+        if (empty($lat) || empty($long) || empty($radius)) {
+            return $this->render('PicweekMainBundle:Place:map.notfound.html.twig', array());
+        }
+
         $datasNear = $this->getDoctrine()
-            ->getRepository('PicweekMainBundle:Picnic\Place')->searchNear($lat, $long, $radius);
+                ->getRepository('PicweekMainBundle:Picnic\Place')->searchNear($lat, $long, $radius);
 
         return array(
             'dists' => $datasNear['dists'],
