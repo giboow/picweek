@@ -65,7 +65,7 @@ class PlaceRepository extends EntityRepository
                 ->from('PicweekMainBundle:Picnic\Place', 'p')
                 ->where('p.id IN ('.implode(',', $ids).')');
 
-            $places = $qB->getQuery()->getResult();
+            $places = $qB->getQuery()->getResult(Query::HYDRATE_ARRAY);
         }
 
         return array(

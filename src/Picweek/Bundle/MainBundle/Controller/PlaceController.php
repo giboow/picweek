@@ -1,6 +1,10 @@
 <?php
 namespace Picweek\Bundle\MainBundle\Controller;
 
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+
+use Symfony\Component\HttpFoundation\Response;
+
 use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Pagerfanta\Exception\NotValidCurrentPageException;
@@ -88,36 +92,60 @@ class PlaceController extends Controller
      */
     public function mapAction()
     {
+
+        return array();
+    }
+
+
+    /**
+     * Ajax
+     *
+     * @return Response the response to return
+     * @Route("/all/format/ajax", name="_place_map_ajax")
+     */
+    public function mapAjaxAction()
+    {
         $request = $this->getRequest();
-        $lat = $request->get('lat');
-        $long = $request->get('long');
-        $radius = $request->get('radius', 30);
 
-        if ($address = $request->get('address')) {
-            $url = "http://maps.googleapis.com/maps/api/geocode/json?address=" . urlencode($address) . "&sensor=false";
-            $datas = json_decode($this->get('anchovy.curl')->setURL($url)->execute());
-            if ($datas->status === 'OK') {
-                $result = $datas->results[0];
-                $location = $result->geometry->location;
-                $lat = $location->lat;
-                $long = $location->lng;
+        if ($request->isXmlHttpRequest()) {
+
+            $request = $this->getRequest();
+            $lat = $request->get('lat');
+            $long = $request->get('long');
+            $radius = $request->get('radius', 30);
+
+            if ($address = $request->get('address')) {
+                $url = "http://maps.googleapis.com/maps/api/geocode/json?address=" . urlencode($address) . "&sensor=false";
+                $datas = json_decode($this->get('anchovy.curl')->setURL($url)->execute());
+                if ($datas->status === 'OK') {
+                    $result = $datas->results[0];
+                    $location = $result->geometry->location;
+                    $lat = $location->lat;
+                    $long = $location->lng;
+                }
             }
+
+            if (empty($lat) || empty($long) || empty($radius)) {
+                throw new NotFoundHttpException();
+            }
+
+            $datasNear = $this->getDoctrine()
+                ->getRepository('PicweekMainBundle:Picnic\Place')
+                ->searchNear($lat, $long, $radius);
+
+            $datas = array(
+                    'dists' => $datasNear['dists'],
+                    'places' => $datasNear['places'],
+                    'latitude' => $lat,
+                    'longitude' => $long,
+                    'radius' => $radius,
+            );
+            $response = new Response(json_encode($datas));
+
+            return $response;
+        } else {
+            throw new NotFoundHttpException();
         }
-
-        if (empty($lat) || empty($long) || empty($radius)) {
-            return $this->render('PicweekMainBundle:Place:map.notfound.html.twig', array());
-        }
-
-        $datasNear = $this->getDoctrine()
-                ->getRepository('PicweekMainBundle:Picnic\Place')->searchNear($lat, $long, $radius);
-
-        return array(
-            'dists' => $datasNear['dists'],
-            'places' => $datasNear['places'],
-            'latitude' => $lat,
-            'longitude' => $long,
-            'radius' => $radius,
-        );
     }
 
 }
