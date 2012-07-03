@@ -10,7 +10,7 @@
 
         #search{
             border : solid 1px blue;
-            width: 300px;
+            width: 600px;
             height: 20px;
             padding:5px;
         }
@@ -65,11 +65,12 @@
             margin-left:10px;
         }
 
-        #search #help-search{
+        #search #help-search #actual{
             border: solid 1px red;
             display: none;
-            position : absolute;
+            position : relative;
             background: white;
+            width: 100%;
         }
 
         #search #distance .border-middle{
@@ -82,6 +83,7 @@
             -moz-border-radius-topleft: 5px;
             border-top-left-radius: 5px;
         }
+
 
     </style>
 {% endblock %}
@@ -96,25 +98,20 @@
 
     function initInterfacesActions()
     {
-        $("input[name=location]").click(function(){
-            $("#help-search").fadeIn(500);
-        });
-
-        $("#help-search div").click(function(){
-            if ($(this).attr("id") == "actual") {
-                if(navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(function(position){
-                        var location = new google.maps.LatLng(
-                            position.coords.latitude, position.coords.longitude, false
-                        );
-                        var geocoder = new google.maps.Geocoder();
-                        geocoder.geocode({'location': location}, function(result, status){
-                            result = result[1];
-                            var address = result.formatted_address;
-                            $("#search input[name=location]").val(address);
-                        });
+        $("#search input:button[name=locate]").click(function(){
+            if(navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position){
+                    var location = new google.maps.LatLng(
+                        position.coords.latitude, position.coords.longitude, false
+                    );
+                    var geocoder = new google.maps.Geocoder();
+                    geocoder.geocode({'location': location}, function(result, status){
+                        result = result[1];
+                        var address = result.formatted_address;
+                        $("#search input[name=location]").val(address);
+                        getPlaces();
                     });
-                }
+                });
             }
         });
 
@@ -134,42 +131,64 @@
         );
 
         $('#search #distance input[type=radio]').change(function(){
-            $('#search #distance .name').html($(this).val()+' km');
+            var radius = $(this).val();
+            $('#search #distance .name').html(radius+' km');
+            $('#search').data('radius', radius);
+            getPlaces();
         });
 
 
         $( "#search #location input:text" ).autocomplete({
-            minLength: 2,
             source: function(request, response){
-                var r = request.term;
-
                 var geocoder = new google.maps.Geocoder();
-                geocoder.geocode({'address' : r}, function(results, status){
+                geocoder.geocode({'address' : request.term}, function(results, status){
                     if(status !== google.maps.GeocoderStatus.OK) {
                         response([]);
                         return;
                     }
+
                     response($.map(results, function(item) {
                         return {
-                          label: item.formatted_address, // appears in dropdown box
-                          value: item.formatted_address, // inserted into input element when selected
-                          geocode: item,                  // all geocode data
+                          label: item.formatted_address,
+                          value: item.formatted_address,
+                          geocode: item,
                         };
                       }
                     ));
                 });
             },
-            focus : function(event, ui){
-                console.log(event);
-            },
-            appendTo : "#help-search",
-            position: { offset: "0 +25" }
+            select: function(event, ui){
+                var item = ui.item;
+                var geocode = item.geocode;
+                var location = geocode.geometry.location;
+                updateDatasLocation(location.lat(), location.lng());
+                getPlaces();
+            }
         });
+
+
+
     }
 
+
+    function updateDatasLocation(lat, lng) {
+        $('#search').data("lat", lat);
+        $('#search').data("lng", lng);
+    }
+
+
     function getPlaces(){
-        var positionCenter = new google.maps.LatLng("47", "2");
-        var zoom = 6;
+        var lat =  $('#search').data("lat");
+        var lng =  $('#search').data("lng");
+        var radius = $('#search').data("radius");
+        var address = $('#search input:text').val();
+        if(radius == undefined) {
+            radius = $("#search input:radio").val();
+        }
+
+
+        var positionCenter = new google.maps.LatLng(lat, lng);
+        var zoom = 8;
 
         var map = new google.maps.Map(
             document.getElementById('gmap'), {
@@ -184,10 +203,13 @@
 
         // Récupération des emplacements aux alentours
         var openInfoWindow = new Array();
-        $.ajax("{{ path("_place_map_ajax", {"address" : "lyon", "radius" : 1000})|raw }}",{
+        $.ajax("{{ path("_place_map_ajax")|raw }}",{
             dataType : "json",
+            data : {
+                "lat" : lat, "long": lng, "radius" : radius, "address": address,
+            },
         }).success(function(datas) {
-            //var distances = datas.dits;
+            var distances = datas.dists;
             var places = datas.places;
             $.each(places, function(index, place) {
                  var positionPlace = new google.maps.LatLng(place.latitude, place.longitude);
@@ -195,9 +217,11 @@
                      map: map,
                      position: positionPlace,
                  });
+                 var url = "{{ url('_welcome')}}place/get/"+place.id;
                  var infowindow = new google.maps.InfoWindow();
                  infowindow.setContent(
-                     "<a href=\""+url+"\">"+"{{ url('_welcome')}}place/get/"+place.id+"</a>"
+                     "<a href=\""+url+"\">"+place.name+"</a>("+Math.round(distances[place.id]*10)/10+"km)<br/>"
+                     //+place.info
                  );
 
                  google.maps.event.addListener(marker, 'click', function() {
@@ -230,12 +254,10 @@
             </div>
 
             <div id="location">
-                <input type="text" name="location">
+                <input type="button" name="locate" value="loc" />
+                <input type="text" name="location" size="60" />
             </div>
             <div class="clear"></div>
-        </div>
-        <div id="help-search">
-            <div id="actual">Lieu actuel</div>
         </div>
     </div>
     <div id="gmap"></div>

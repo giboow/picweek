@@ -113,8 +113,8 @@ class PlaceController extends Controller
             $lat = $request->get('lat');
             $long = $request->get('long');
             $radius = $request->get('radius', 30);
-
-            if ($address = $request->get('address')) {
+            $address = $request->get('address');
+            if (!$lat && !$long && $address) {
                 $url = "http://maps.googleapis.com/maps/api/geocode/json?address=" . urlencode($address) . "&sensor=false";
                 $datas = json_decode($this->get('anchovy.curl')->setURL($url)->execute());
                 if ($datas->status === 'OK') {
