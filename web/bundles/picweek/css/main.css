@@ -4,27 +4,6 @@
 /* Reset */
 * { margin:0; padding:0; }
 
-/* Utils */
-.clear{
-    clear: both;
-    margin:0; padding:0;
-}
-
-ol, ul {
-    list-style: none outside none;
-}
-
-
-a, a:VISITED {
-    text-decoration: none;
-    color: inherit;
-}
-
-a:HOVER {
-    text-decoration: underline;
-}
-
-
 h1 { font-size:160%}
 h2 { font-size:140%}
 h3 { font-size:120%}
@@ -37,6 +16,99 @@ body{
     background-color:#fff;
     padding:0;
 }
+
+
+.clear{
+    clear: both;
+    margin:0; padding:0;
+}
+
+ol, ul {
+    list-style: none outside none;
+}
+
+
+a, a:VISITED {
+    text-decoration: none;
+    color: #6EAB00;
+}
+
+a:HOVER {
+    text-decoration: underline;
+
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+form{
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background-color: #F3FFDE;
+    border: solid 1px #DDFEAA;
+    padding: 20px;
+}
+
+form li {
+    padding: 3px;
+}
+
+form .text-box label, form .text-box input, form .text-box textarea {
+    background-color: white;
+    border: 1px solid #CCCCCC;
+    margin: 0 !important;
+    padding: 6px 0;
+    position: relative;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    cursor: text;
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 18px;
+    text-indent: 10px !important;
+    width: 283px;
+}
+
+form .text-box input, form .text-box label {
+    width: 138px !important;
+}
+
+
+
+
+a.bouton,  form input[type=submit]
+    {
+    -moz-transition: all .4s cubic-bezier;
+    border: 1px solid #2FAB00;
+    display: block;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    padding: 10px 5px;
+    line-height: 44px;
+    font: 12px 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    background: #6EAB00;
+
+}
+
+
+a.bouton:hover, form input[type=submit]:hover
+{
+    background: #2FAB00; /* Old browsers */
+}
+
+a.bouton:active, form input[type=submit]:active {
+     -moz-transform: scale(0.98);
+     box-shadow: 2px 2px 15px rgba(255, 255, 255, 0.8);
+}
+
 
 /* Style */
 body header #main{
@@ -59,21 +131,15 @@ body header #main .connect {
     float: right;
 }
 
-body header #main .connect a{
-    text-decoration: underline;
-    color: #05A700;
-}
-
-
-body header #main .connect a:hover{
-    color: inherit;
-}
-
 
 header #main nav {
     float: left;
     font-size: 1.3em;
     margin-top : 10px;
+}
+
+header #main nav a{
+    color: #FFFFFF;
 }
 
 header #main nav li {
