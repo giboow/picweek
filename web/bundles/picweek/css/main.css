@@ -1,5 +1,6 @@
 @CHARSET "UTF-8";
-
+/*Palette couleur*/
+/*http://mudcu.be/sphere/#config={%22hsl%22:{%22H%22:135.2438103561041,%22S%22:100,%22L%22:33.531360778183526},%22theme%22:%22dark%22,%22quantize%22:0,%22harmony%22:%22Neutral%22,%22vision%22:%22Normal%22,%22space%22:%22RYB%22,%22top%22:62,%22left%22:50,%22diameter%22:500,%22scale%22:3,%22dot%22:false}*/
 /* Reset */
 * { margin:0; padding:0; }
 
@@ -9,24 +10,85 @@
     margin:0; padding:0;
 }
 
+ol, ul {
+    list-style: none outside none;
+}
+
+
+a, a:VISITED {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:HOVER {
+    text-decoration: underline;
+}
+
+
+h1 { font-size:160%}
+h2 { font-size:140%}
+h3 { font-size:120%}
+
+body{
+    height:100%;
+    font-family:Helvetica,Arial,sans-serif;
+    font-size:small;
+    color:#000;
+    background-color:#fff;
+    padding:0;
+}
+
 /* Style */
 body header #main{
-    border : solid 1px red;
-    height : 50px;
+    /*background-color: #6C6C6C;*/
+    height : 40px;
+    color : #FFFFFF;
+    background: url('../img/background.png');
+    padding: 20px;
 }
 
 body header #main .title {
+    width: 350px;
+    font-size: 2.5em;
+    font-family: 'Chewy', arial, serif;
+    float: left;
 }
 
 body header #main .connect {
-    float : right;
+    margin-top : 10px;
+    float: right;
 }
 
-body header #subtitle {
-    height : 70px;
-    text-align: center;
-    border : solid 1px blue;
+body header #main .connect a{
+    text-decoration: underline;
+    color: #05A700;
 }
+
+
+body header #main .connect a:hover{
+    color: inherit;
+}
+
+
+header #main nav {
+    float: left;
+    font-size: 1.3em;
+    margin-top : 10px;
+}
+
+header #main nav li {
+    display: inline;
+    margin-right: 1px;
+    padding: 10px 10px;
+}
+
+header #main nav li.active {
+    background: #000000;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
 
 body footer #copyright {
     text-align: center;
@@ -34,36 +96,32 @@ body footer #copyright {
     padding-bottom: 100px;
     min-height: 250px;
     font-size: 12px;
+    color: #FFFFFF;
 }
 
 #middle {
     margin: 0 auto;
-    margin-top: 35px;
     position: relative;
     vertical-align: middle;
-    border: solid 1px;
-    min-height: 250px;
-    width: 955px;
+    min-height: 330px;
+    background: #FFFFFF;
 }
 
-#middle nav {
-    height: 34px;
-    border: solid 1px;
+#middle #subheader {
+    height: 300px;
 }
 
-#middle nav ul {
-    list-style: none;
+#middle #content {
+    margin: 0 auto;
+    width: 1024px;
+    padding: 20px 10px;
 }
 
-#middle nav li {
-    display: inline;
-}
 
 .place {
     width: 100%;
     padding: 5px;
 }
-
 
 .place .title {
     font-weight: bold;
@@ -75,11 +133,10 @@ body footer #copyright {
     border-radius: 10px;
 }
 
-
-
 .place #gmap {
     float: right;
     width: 400px;
     height: 350px;
     margin-right: 10px;
 }
+

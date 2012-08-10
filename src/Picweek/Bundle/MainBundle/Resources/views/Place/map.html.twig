@@ -4,15 +4,20 @@
     {{ parent() }}
     <style type="text/css">
         #gmap{
-            width : 400px;
-            height: 300px;
+            background: #B2B2B2;
         }
 
         #search{
-            border : solid 1px blue;
             width: 600px;
             height: 20px;
-            padding:5px;
+            padding: 10px;
+            margin: 10px 100px;
+            position: absolute;
+            top: 0px;
+            background: white;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
         }
 
         #search #location{
@@ -197,6 +202,13 @@
                 streetViewControl: false,
                 panControl: false,
                 zoom: zoom,
+                noClear: true,
+                zoomControlOptions: {
+                    position: google.maps.ControlPosition.RIGHT_TOP,
+                    style: google.maps.ZoomControlStyle.LARGE
+                }
+
+
             }
         );
 
@@ -210,7 +222,7 @@
             },
         }).success(function(datas) {
             var distances = datas.dists;
-            var places = datas.places;
+             var places = datas.places;
             $.each(places, function(index, place) {
                  var positionPlace = new google.maps.LatLng(place.latitude, place.longitude);
                  var marker = new google.maps.Marker({
@@ -240,25 +252,33 @@
     </script>
 {% endblock     %}
 
-{% block content %}
-    <div id="search">
-        <div id="main-search">
-            <div id="distance">
-                <div class="name">10 km</div>
-                <div class="select">
-                    <div class="border-middle"></div>
-                    <div class="title">Distance max:</div>
-                    <div>10km <input type="radio" name="distance" value="10" checked="checked"/></div>
-                    <div>30km <input type="radio" name="distance" value="30"/></div>
+{% block subheader %}
+    <div style="position: relative;">
+        <div id="gmap" style="height: 300px;"></div>
+          <div id="search">
+            <div id="main-search">
+                <div id="distance">
+                    <div class="name">10 km</div>
+                    <div class="select">
+                        <div class="border-middle"></div>
+                        <div class="title">Distance max:</div>
+                        <div>10km <input type="radio" name="distance" value="10" checked="checked"/></div>
+                        <div>30km <input type="radio" name="distance" value="30"/></div>
+                    </div>
                 </div>
-            </div>
 
-            <div id="location">
-                <input type="button" name="locate" value="loc" />
-                <input type="text" name="location" size="60" />
+                <div id="location">
+                    <input type="button" name="locate" value="loc" />
+                    <input type="text" name="location" size="60" />
+                </div>
+                <div class="clear"></div>
             </div>
-            <div class="clear"></div>
         </div>
-    </div>
-    <div id="gmap"></div>
+      </div>
+
+    <div class="clear"></div>
+{% endblock %}
+
+{% block content %}
+<h1>Best Picnick Places</h1>
 {% endblock %}

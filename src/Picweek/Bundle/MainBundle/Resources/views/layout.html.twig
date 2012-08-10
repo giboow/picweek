@@ -3,6 +3,7 @@
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     {% block stylesheets %}
+    <link href='http://fonts.googleapis.com/css?family=Chewy' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{ asset('bundles/picweek/css/main.css') }}" type="text/css" media="all" />
     <link rel="stylesheet" href="{{ asset('bundles/picweek/css/jquery-ui/ui-lightness/jquery-ui-1.8.21.custom.css') }}" type="text/css" media="all" />
     {% endblock %}
@@ -13,33 +14,39 @@
     <script src="{{ asset('bundles/picweek/js/main.js') }}" type="text/javascript"></script>
     {% endblock %}
 
-    <title>{% block title %}Picweek{% endblock %}</title>
+    <title>{% block title %}Picnick Break{% endblock %}</title>
     </head>
     <body>
         <header>
             <div id="main">
-                <div class="title">Picweek</div>
-                <div class="connect">&rarr; Connection</div>
-            </div>
-            <div class="clear"></div>
-            <div id="subtitle">
-                Géolocalisation de coins Pique-Nique
+                <div class="title">Picnick Break</div>
+                <nav>
+                    <ul>
+                        <li class="active"><a href="">Home</a></li>
+                        <li><a href="">Explore</a></li>
+                        <li><a href="">About</a></li>
+                        <li><a href="">Blog</a></li>
+                        <li><a href="">Mobile</a></li>
+                    </ul>
+                </nav>
+                <div class="connect">
+                <a href="">Join</a> or <a href="">Login</a>
+                </div>
+                <div class="clear"></div>
             </div>
         </header>
         <div id="middle">
-            <nav>
-                <ul>
-                    <li><a href="">Recherche</a></li>
-                    <li><a href="">Ajouter</a></li>
-                    <li><a href="">Contact</a></li>
-                </ul>
-            </nav>
 
-            <div id="nbPlaces">Nombre d'emplacement enregistrés : {% render "PicweekMainBundle:Place:count" %}</div>
 
+            <!-- <div id="nbPlaces">Nombre d'emplacement enregistrés : {% render "PicweekMainBundle:Place:count" %}</div> -->
+            <div id="subheader">
+                {% block subheader %}
+                {% endblock %}
+            </div>
+            <div class="clear"></div>
             <div id="content">
-            {% block content %}
-            {% endblock %}
+                {% block content %}
+                {% endblock %}
             </div>
         </div>
 

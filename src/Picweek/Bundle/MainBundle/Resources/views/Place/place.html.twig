@@ -30,11 +30,14 @@
     </script>
 {% endblock %}
 
+{% block subheader %}
+    <div style="position: relative;">
+        <div id="gmap" style="height: 300px;"></div>
+    </div>
+{% endblock %}
 
 {% block content %}
-
     <div class="place">
-        <div id="gmap"></div>
         <div class="infos">
             <div class="title">{{ place.name|capitalize }}</div>
              <div class="info">BlaBlaBla</div>
@@ -44,5 +47,4 @@
         </div>
         <div class="clear"></div>
     </div>
-
 {% endblock %}
