@@ -7,7 +7,10 @@ _place:
     type:     annotation
     prefix:   /place
 
-
+_user:
+    resource: "@PicweekMainBundle/Controller/UserController.php"
+    type:     annotation
+    prefix:   /user
 
 # Internal routing configuration to handle ESI
 #_internal:
