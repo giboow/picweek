@@ -125,6 +125,10 @@ body header #main .title {
     float: left;
 }
 
+body header #main .title a:hover {
+    text-decoration: none;
+}
+
 body header #main .connect {
     margin-top : 10px;
     float: right;
@@ -141,17 +145,30 @@ header #main nav a{
     color: #FFFFFF;
 }
 
-header #main nav li {
+
+header #main nav ul li {
     display: inline;
     margin-right: 1px;
+    height: 100%;
+    width: 100%;
     padding: 10px 10px;
-}
-
-header #main nav li.active {
-    background: #000000;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
+    -webkit-transition:background 0.4s;
+    -moz-transition:background 0.4s;
+    -ms-transition:background-color 0.4s;
+    -o-transition:background 0.4s;
+    background:transparent;
+}
+
+header #main nav ul li:hover, header #main nav ul li.active {
+    background: #000000;
+    -webkit-transition:background 0.4s;
+    -moz-transition:background 0.4s;
+    -o-transition:background 0.4s;
+    -ms-transition:background 0.4s;
+    transition:background 0.4s;
 }
 
 
