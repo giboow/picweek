@@ -9,9 +9,29 @@
     {% endblock %}
 
     {% block headJavascripts %}
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+    <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
     <script src="{{ asset('bundles/picweek/js/jquery/jquery-ui-1.8.21.custom.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/picweek/js/main.js') }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#overlay").overlay({
+                mask: '#000',
+            });
+            $(".btJoin").click(showUserJoinForm)
+
+
+        });
+
+        function showUserJoinForm() {
+            $.ajax({
+                url: '{{ path('_user_join') }}'
+            }).done(function(response){
+                $("#overlayContent").html(response);
+                $("#overlay").overlay().load();
+            });
+        }
+    </script>
     {% endblock %}
 
     <title>{% block title %}Picnick Break{% endblock %}</title>
@@ -30,7 +50,7 @@
                     </ul>
                 </nav>
                 <div class="connect">
-                <a href="">Join</a> or <a href="">Login</a>
+                <a class="btJoin" href="javascript:void(0);">Join</a> or <a class="btLogin" href="javascript:void(0);">Login</a>
                 </div>
                 <div class="clear"></div>
             </div>
@@ -51,9 +71,12 @@
         </div>
 
         <footer>
-            <div id="copyright" class="clear">Copirygth &copy;{{ "now"|date("Y") }} Picweek. All Rights Reserved.</div>
+            <div id="copyright" class="clear">Copirygth &copy;{{ "now"|date("Y") }} Picnick Break. All Rights Reserved.</div>
         </footer>
         {% block javascripts %}
         {% endblock %}
+        <div id="overlay">
+            <div id="overlayContent"></div>
+        </div>
     </body>
 </html>

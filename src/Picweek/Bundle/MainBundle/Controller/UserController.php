@@ -17,12 +17,17 @@ class UserController extends Controller
     /**
      * Render main page
      *
-     * @Route("/join")
+     * @Route("/join", name="_user_join")
      * @Template()
      * @return array
      */
     public function joinAction()
     {
+        $request = $this->getRequest();
+        if ($request->isXmlHttpRequest()) {
+            return $this->render('PicweekMainBundle:User:join.ajax.twig', array());
+        }
+
         return array();
     }
 }
