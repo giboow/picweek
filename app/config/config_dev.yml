@@ -21,3 +21,11 @@ monolog:
 
 assetic:
     use_controller: true
+
+
+twig:
+    debug: 1
+services:
+    debug.twig.extension:
+        class: Twig_Extensions_Extension_Debug
+        tags: [{ name: 'twig.extension' }]

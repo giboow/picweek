@@ -42,11 +42,21 @@
                 <div class="title"><a href="{{ path('_welcome') }}">Picnick Break</a></div>
                 <nav>
                     <ul>
-                        <li class="active"><a href="{{ path('_welcome') }}">Home</a></li>
-                        <li><a href="{{ path('_place_map') }}">Explore</a></li>
-                        <li><a href="">About</a></li>
-                        <li><a href="">Blog</a></li>
-                        <li><a href="">Mobile</a></li>
+                        <li class="{% if app.request.attributes.get('_route') == '_welcome' %}active{% endif %}" >
+                            <a href="{{ path('_welcome') }}">
+                             Home
+                             </a>
+                        </li>
+
+                        <li class="{% if app.request.attributes.get('_route') == '_place_map' %}active{% endif %}">
+                            <a class="explore" href="{{ path('_place_map') }}">Explore</a>
+                        </li>
+                        <li>
+                            <a class="about" href="">About</a>
+                        </li>
+                        <li>
+                            <a class="blog" href="">Blog</a>
+                        </li>
                     </ul>
                 </nav>
                 <div class="connect">
