@@ -138,7 +138,7 @@
                  --standard=Symfony2
                  --extensions=php
                  ${source}" />
-            
+
         </exec>
     </target>
 
@@ -179,7 +179,21 @@
     </target>
 
     <target
+        name="cacheClear"
+        description="Clear appp cache" >
+
+        <exec
+            executable="app/console"
+            failonerror="true" >
+
+            <arg value="cache:clear" />
+            <arg value="--env=prod" />
+            <arg value="--no-debug" />
+        </exec>
+    </target>
+
+    <target
         name="build"
-        depends="clean,vendors,parallelTasks,phpunit,phpcb" />
+        depends="clean,vendors,cacheClear,parallelTasks,phpunit,phpcb" />
 
 </project>
