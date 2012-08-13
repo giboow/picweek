@@ -9,7 +9,7 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
- * Picweek/Bundle/MainBundle/DefaultController testcase
+ * Picweek/Bundle/MainBundle/UserController testcase
  *
  * @author Philippe Gibert <philippe.gibert@gmail.com>
  * @since  0.1

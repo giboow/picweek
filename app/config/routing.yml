@@ -2,6 +2,10 @@ _welcome:
     pattern:  /
     defaults: { _controller: PicweekMainBundle:Default:Index }
 
+_error:
+    pattern:  /error
+    defaults: { _controller: PicweekMainBundle:Error:Error }
+
 _place:
     resource: "@PicweekMainBundle/Controller/PlaceController.php"
     type:     annotation
@@ -11,6 +15,7 @@ _user:
     resource: "@PicweekMainBundle/Controller/UserController.php"
     type:     annotation
     prefix:   /user
+
 
 # Internal routing configuration to handle ESI
 #_internal:
