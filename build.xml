@@ -199,6 +199,15 @@
         <copy todir="/var/www/picweek">
             <fileset dir="${basedir}"/>
         </copy>
+        <exec
+            executable="bash"
+            failonerror="false" >
+
+            <arg value="chmod" />
+            <arg value="-R" />
+            <arg value="777" />
+            <arg value="/var/www/picweek" />
+        </exec>
     </target>
 
     <target
