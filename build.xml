@@ -192,8 +192,17 @@
         </exec>
     </target>
 
+
+    <target
+        name="copy"
+        description="copy to /var/www/picweek">
+        <copy todir="/var/www/picweek">
+            <fileset dir="${basedir}"/>
+        </copy>
+    </target>
+
     <target
         name="build"
-        depends="clean,vendors,cacheClear,parallelTasks,phpunit,phpcb" />
+        depends="clean,vendors,cacheClear,parallelTasks,phpunit,phpcb,copy" />
 
 </project>
