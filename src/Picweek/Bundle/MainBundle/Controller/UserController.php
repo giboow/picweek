@@ -30,4 +30,21 @@ class UserController extends Controller
 
         return array();
     }
+
+    /**
+     * Render main page
+     *
+     * @Route("/login", name="_user_login")
+     * @Template()
+     * @return array
+     */
+    public function loginAction()
+    {
+        $request = $this->getRequest();
+        if ($request->isXmlHttpRequest()) {
+            return $this->render('PicweekMainBundle:User:login.ajax.twig', array());
+        }
+
+        return array();
+    }
 }

@@ -18,7 +18,8 @@
             $("#overlay").overlay({
                 mask: '#000',
             });
-            $(".btJoin").click(showUserJoinForm)
+            $(".btJoin").click(showUserJoinForm);
+            $(".btLogin").click(showUserLoginForm)
 
 
         });
@@ -26,6 +27,14 @@
         function showUserJoinForm() {
             $.ajax({
                 url: '{{ path('_user_join') }}'
+            }).done(function(response){
+                $("#overlayContent").html(response);
+                $("#overlay").overlay().load();
+            });
+        }
+        function showUserLoginForm() {
+            $.ajax({
+                url: '{{ path('_user_login') }}'
             }).done(function(response){
                 $("#overlayContent").html(response);
                 $("#overlay").overlay().load();

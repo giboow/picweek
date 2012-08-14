@@ -1,0 +1,16 @@
+{% extends "PicweekMainBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+{{ parent() }}
+<style type="text/css">
+<!--
+    #subheader{
+        display: none;
+    }
+-->
+</style>
+{% endblock %}
+
+{% block content %}
+    {% include 'PicweekMainBundle:User:login.ajax.twig' %}
+{% endblock %}
