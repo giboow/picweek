@@ -12,4 +12,15 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class PicweekUserBundle extends Bundle
 {
+
+    /**
+     * (non-PHPdoc)
+     * @see Symfony\Component\HttpKernel\Bundle.Bundle::getParent()
+     *
+     * @return string
+     */
+    public function getParent()
+    {
+        return 'FOSUserBundle';
+    }
 }

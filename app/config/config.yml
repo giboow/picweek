@@ -65,3 +65,12 @@ swiftmailer:
 jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Picweek\Bundle\UserBundle\Entity\User
+    registration:
+      form:
+        type: picweek_user_registration
+

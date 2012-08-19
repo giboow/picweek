@@ -1,0 +1,6 @@
+services:
+    store_user.registration.form.type:
+        class: Picweek\Bundle\UserBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: picweek_user_registration}

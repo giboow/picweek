@@ -24,6 +24,7 @@ $loader->registerNamespaces(array(
     'Pagerfanta'       => __DIR__.'/../vendor/pagerfanta/src',
     'Curl'             => __DIR__.'/../vendor/phpoo-curl/lib',
     'Anchovy'          => __DIR__.'/../vendor/bundles',
+    'FOS'              => __DIR__.'/../vendor/bundles',
 ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',

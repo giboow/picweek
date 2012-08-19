@@ -1,0 +1,47 @@
+{% extends "PicweekMainBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+{{ parent() }}
+<style type="text/css">
+<!--
+    #subheader{
+        display: none;
+    }
+-->
+</style>
+{% endblock %}
+
+{% block content %}
+    <form class="user-form join-form" action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST"    >
+        <ul>
+            <li>
+                <div class="text-box">
+                {{ form_widget(form.username, { 'attr': {'placeholder': 'Name'} }) }}
+                </div>
+            </li>
+            <li>
+                <div class="text-box">
+                    {{ form_widget(form.email, { 'attr': {'placeholder': 'Email'} }) }}
+                </div>
+            </li>
+            <li>
+                <div class="text-box">
+                    {{ form_widget(form.plainPassword.first, { 'attr': {'placeholder': 'Password'} }) }}
+                    {{ form_widget(form.plainPassword.second, { 'attr': {'placeholder': 'Retype Password'} }) }}
+                    <div class="clear"></div>
+                </div>
+            </li>
+            <li>
+                <p>
+                By signing up you agree to our <a href="">Terms of Service</a> and <a href="">Policy</a>.
+                </p>
+            </li>
+            <li>
+                <div class="text-box">
+                    <input type="submit" name="submit" value="I'm Agree, sign me up"/>
+                </div>
+            </li>
+        </ul>
+        {{ form_widget(form) }}
+    </form>
+{% endblock %}

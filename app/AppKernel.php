@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new Anchovy\CURLBundle\AnchovyCURLBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
             new Picweek\Bundle\MainBundle\PicweekMainBundle(),
             new Picweek\Bundle\UserBundle\PicweekUserBundle(),
         );
