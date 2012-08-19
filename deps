@@ -79,3 +79,7 @@
     git=https://github.com/Iman/AnchovyCURLBundle.git
     target=/bundles/Anchovy/CURLBundle
 
+[FOSUserBundle]
+    git=git://github.com/FriendsOfSymfony/FOSUserBundle.git
+    target=/bundles/FOS/UserBundle
+    version=1.2.0
