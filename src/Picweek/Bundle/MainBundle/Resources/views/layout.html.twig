@@ -26,7 +26,7 @@
 
         function showUserJoinForm() {
             $.ajax({
-                url: '{# {{ path('_user_join') }} #}'
+                url: '{{ path('fos_user_registration_register') }}'
             }).done(function(response){
                 $("#overlayContent").html(response);
                 $("#overlay").overlay().load();
