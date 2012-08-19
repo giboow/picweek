@@ -212,6 +212,6 @@
 
     <target
         name="build"
-        depends="clean,vendors,cacheClear,parallelTasks,phpunit,phpcb,copy" />
+        depends="clean,vendors,cacheClear,parallelTasks,phpunit,phpcb" />
 
 </project>
