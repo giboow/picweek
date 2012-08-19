@@ -1,4 +1,4 @@
-{% extends "PicweekMainBundle::layout.html.twig" %}
+{% extends app.request.isXmlHttpRequest() ? "PicweekMainBundle::layout.ajax.twig" : "PicweekMainBundle::layout.html.twig"%}
 
 {% block stylesheets %}
 {{ parent() }}
@@ -12,6 +12,7 @@
 {% endblock %}
 
 {% block content %}
+    <h1>Join Picnic-Break</h1>
     <form class="user-form join-form" action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST"    >
         <ul>
             <li>
