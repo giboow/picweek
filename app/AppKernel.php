@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new Anchovy\CURLBundle\AnchovyCURLBundle(),
             new Picweek\Bundle\MainBundle\PicweekMainBundle(),
+            new Picweek\Bundle\UserBundle\PicweekUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -26,7 +26,7 @@
 
         function showUserJoinForm() {
             $.ajax({
-                url: '{{ path('_user_join') }}'
+                url: '{# {{ path('_user_join') }} #}'
             }).done(function(response){
                 $("#overlayContent").html(response);
                 $("#overlay").overlay().load();
@@ -34,7 +34,7 @@
         }
         function showUserLoginForm() {
             $.ajax({
-                url: '{{ path('_user_login') }}'
+                url: '{# {{ path('_user_login') }} #}'
             }).done(function(response){
                 $("#overlayContent").html(response);
                 $("#overlay").overlay().load();

@@ -12,7 +12,7 @@ _place:
     prefix:   /place
 
 _user:
-    resource: "@PicweekMainBundle/Controller/UserController.php"
+    resource: "@PicweekUserBundle/Controller/DefaultController.php"
     type:     annotation
     prefix:   /user
 
