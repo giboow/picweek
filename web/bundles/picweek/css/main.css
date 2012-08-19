@@ -71,6 +71,11 @@ form .text-box label, form .text-box input, form .text-box textarea {
     width: 283px;
 }
 
+form .text-box input[type=checkbox] {
+    width: inherit !important;
+}
+
+
 form .text-box input, form .text-box label {
     width: 138px !important;
 }

@@ -1,0 +1,46 @@
+{% extends app.request.isXmlHttpRequest() ? "PicweekMainBundle::layout.ajax.twig" : "PicweekMainBundle::layout.html.twig"%}
+
+{% block stylesheets %}
+{{ parent() }}
+<style type="text/css">
+<!--
+    #subheader{
+        display: none;
+    }
+-->
+</style>
+{% endblock %}
+
+{% block content %}
+<h1>Login</h1>
+<form class="user-form login-form" action="{{ path("fos_user_security_check") }}" method="post">
+{% if error %}
+    <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+{% endif %}
+
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    <ul>
+        <li>
+            <div class="text-box ">
+                <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Username"/>
+            </div>
+        </li>
+        <li>
+            <div class="text-box">
+                <input id="password" name="_password" placeholder="Retype Password" />
+            </div>
+        </li>
+        <li>
+            <div class="text-box">
+                <input type="checkbox" id="remember_me" name="_remember_me" checked="checked" /> Rember me?
+            </div>
+        </li>
+        <li>
+            <div class="text-box">
+                <input type="submit" name="login" value="Login"/>
+                <a href="">Forgot your password?</a>
+            </div>
+        </li>
+    </ul>
+</form>
+{% endblock %}

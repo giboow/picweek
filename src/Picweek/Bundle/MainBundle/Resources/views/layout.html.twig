@@ -34,7 +34,7 @@
         }
         function showUserLoginForm() {
             $.ajax({
-                url: '{# {{ path('_user_login') }} #}'
+                url: '{{ path('fos_user_security_login') }}'
             }).done(function(response){
                 $("#overlayContent").html(response);
                 $("#overlay").overlay().load();
@@ -69,7 +69,11 @@
                     </ul>
                 </nav>
                 <div class="connect">
-                <a class="btJoin" href="javascript:void(0);">Join</a> or <a class="btLogin" href="javascript:void(0);">Login</a>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <a href="{{ path('fos_user_security_logout') }}">Logout</a>
+                {% else %}
+                    <a class="btJoin" href="javascript:void(0);">Join</a> or <a class="btLogin" href="javascript:void(0);">Login</a>
+                {% endif %}
                 </div>
                 <div class="clear"></div>
             </div>
