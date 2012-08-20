@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Picweek\Bundle\MainBundle\PicweekMainBundle(),
             new Picweek\Bundle\UserBundle\PicweekUserBundle(),
+            new Picweek\Bundle\AdminBundle\PicweekAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

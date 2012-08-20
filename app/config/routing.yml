@@ -1,3 +1,8 @@
+PicweekAdminBundle:
+    resource: "@PicweekAdminBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 _welcome:
     pattern:  /
     defaults: { _controller: PicweekMainBundle:Default:Index }

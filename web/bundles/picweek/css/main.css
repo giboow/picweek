@@ -181,6 +181,10 @@ header #main nav a{
     color: #FFFFFF;
 }
 
+header #main nav a:HOVER{
+    text-decoration: none;
+}
+
 
 header #main nav ul li {
     display: inline;

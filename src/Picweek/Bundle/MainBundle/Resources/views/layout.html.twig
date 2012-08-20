@@ -56,7 +56,6 @@
                              Home
                              </a>
                         </li>
-
                         <li class="{% if app.request.attributes.get('_route') == '_place_map' %}active{% endif %}">
                             <a class="explore" href="{{ path('_place_map') }}">Explore</a>
                         </li>
@@ -69,6 +68,11 @@
                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         <li class="{% if app.request.attributes.get('_route') == 'fos_user_profile_show' %}active{% endif %}">
                             <a href="{{ path('fos_user_profile_show') }}">Profile</a>
+                        </li>
+                        {% endif %}
+                        {% if is_granted("ROLE_ADMIN") %}
+                        <li class="{% if app.request.attributes.get('_route') == '_admin' %}active{% endif %}">
+                            <a href="{{ path('admin') }}">Admin</a>
                         </li>
                         {% endif %}
                     </ul>
