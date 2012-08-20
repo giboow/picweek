@@ -41,7 +41,15 @@ p {
     margin-bottom: 1em;
 }
 
-form{
+.title {
+    text-transform: uppercase;
+}
+
+.cadre .title {
+    font-weight: bold;
+}
+
+form, .cadre{
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
@@ -97,6 +105,7 @@ form.user-form.join-form input[type=password]{
 form .text-box input, form .text-box label {
     width: 300px !important;
 }
+
 form .text-box input[type=submit] {
     width: inherit !important;
     padding: 5px;
@@ -106,7 +115,7 @@ form .text-box input[type=submit] {
 
 
 
-a.bouton,  form input[type=submit]
+a.bouton,  form input[type=submit], input[type=button]
     {
     -moz-transition: all .4s cubic-bezier;
     border: 1px solid #2FAB00;

@@ -66,6 +66,11 @@
                         <li>
                             <a class="blog" href="">Blog</a>
                         </li>
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li class="{% if app.request.attributes.get('_route') == 'fos_user_profile_show' %}active{% endif %}">
+                            <a href="{{ path('fos_user_profile_show') }}">Profile</a>
+                        </li>
+                        {% endif %}
                     </ul>
                 </nav>
                 <div class="connect">
