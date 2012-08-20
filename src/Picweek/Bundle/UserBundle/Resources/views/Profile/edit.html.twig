@@ -1,0 +1,39 @@
+{% extends "PicweekMainBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+{{ parent() }}
+<style type="text/css">
+<!--
+    #subheader{
+        display: none;
+    }
+-->
+</style>
+{% endblock %}
+
+{% block content %}
+<h1>Edit profile</h1>
+<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+    <ul>
+        <li>
+            <div class="text-box">
+                   Username : {{ form_widget(form.user.username, { 'attr': {'placeholder': 'Username'} }) }}
+            </div>
+        </li>
+        <li>
+            <div class="text-box">
+                Email : {{ form_widget(form.user.email, { 'attr': {'placeholder': 'Email'} }) }}
+            </div>
+        </li>
+        <li>
+            <div class="text-box">
+                Password validation : {{ form_widget(form.current, { 'attr': {'placeholder': 'Current Password'} }) }}
+            </div>
+        </li>
+        <li>
+            {{ form_widget(form) }}
+             <input type="submit" value="Modify profile" />
+        </li>
+    </ul>
+</form>
+{% endblock %}
