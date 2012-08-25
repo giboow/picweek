@@ -2,7 +2,7 @@
 namespace Picweek\Bundle\UserBundle\Form\Type;
 
 use Symfony\Component\Form\FormBuilder;
-use FOS\UserBundle\Form\Type\RegistrationFormType as BaseType;
+use FOS\UserBundle\Form\Type\ProfileFormType as BaseType;
 
 /**
  * Picweek\Bundle\UserBundle\Form\Type\RegistrationFormType
@@ -10,7 +10,7 @@ use FOS\UserBundle\Form\Type\RegistrationFormType as BaseType;
  * @author Philippe Gibert <philippe.gibert@gmail.com>
  * @since  0.1
  */
-class RegistrationFormType extends BaseType
+class ProfileFormType extends BaseType
 {
 
 
@@ -23,9 +23,9 @@ class RegistrationFormType extends BaseType
      *
      * @return void
      */
-    public function buildForm(FormBuilder $builder, array $options)
+    public function buildUserForm(FormBuilder $builder, array $options)
     {
-        parent::buildForm($builder, $options);
+        parent::buildUserForm($builder, $options);
 
         $builder->add('location', null, array('required' => false));
     }
@@ -38,6 +38,6 @@ class RegistrationFormType extends BaseType
      */
     public function getName()
     {
-        return 'picweek_user_registration';
+        return 'picweek_user_profile';
     }
 }

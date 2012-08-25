@@ -4,3 +4,8 @@ services:
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: picweek_user_registration}
+    store_user.profile.form.type:
+        class: Picweek\Bundle\UserBundle\Form\Type\ProfileFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: picweek_user_profile}

@@ -27,6 +27,11 @@
         </li>
         <li>
             <div class="text-box">
+                Location : {{ form_widget(form.user.location, { 'attr': {'placeholder': 'Location'} }) }}
+            </div>
+        </li>
+        <li>
+            <div class="text-box">
                 Password validation : {{ form_widget(form.current, { 'attr': {'placeholder': 'Current Password'} }) }}
             </div>
         </li>

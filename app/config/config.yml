@@ -73,4 +73,7 @@ fos_user:
     registration:
       form:
         type: picweek_user_registration
+    profile:
+      form:
+        type: picweek_user_profile
 
