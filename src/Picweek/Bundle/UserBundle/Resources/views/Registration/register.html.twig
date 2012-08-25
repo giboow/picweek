@@ -27,6 +27,11 @@
             </li>
             <li>
                 <div class="text-box">
+                    {{ form_widget(form.location, { 'attr': {'placeholder': 'Location'} }) }}
+                </div>
+            </li>
+            <li>
+                <div class="text-box">
                     {{ form_widget(form.plainPassword.first, { 'attr': {'placeholder': 'Password'} }) }}
                     {{ form_widget(form.plainPassword.second, { 'attr': {'placeholder': 'Retype Password'} }) }}
                     <div class="clear"></div>
