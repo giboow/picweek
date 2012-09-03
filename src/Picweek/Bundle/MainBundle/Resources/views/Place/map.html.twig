@@ -21,6 +21,11 @@
             border-radius: 5px;
         }
 
+        #search input[type=button]{
+            padding: 2px;
+        }
+
+
         #search #location{
             display : inline;
         }
@@ -124,12 +129,11 @@
         $('#search #distance').hover(
             function(){
 
-                $(this).children(".select").stop(true).fadeIn(500);
+                $(this).children(".select").css('opacity',1).stop(true).fadeIn(500);
                 $(this).children("div").css('border-color', '#CCCBD2');
                 $(this).children(".select").children('div').css('border-color', '#CCCBD2');
             },
             function(){
-
                 $(this).children("div").css('border-color', 'transparent');
                 $(this).children(".select").children('div').css('border-color', 'transparent');
                 $(this).children(".select").stop(true).fadeOut(200);
