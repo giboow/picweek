@@ -30,18 +30,19 @@ class Comment
      */
     private $comment;
 
-    /**
-     * @var integer $score
-     *
-     * @ORM\Column(name="score", type="integer")
-     */
-    private $score;
 
     /**
      * @ORM\ManyToOne(targetEntity="\Picweek\Bundle\MainBundle\Entity\Picnic\Place", inversedBy="comments", cascade={"remove"})
-     * @ORM\JoinColumn(name="desk_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="place_id", referencedColumnName="id")
      */
     private $place;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="\Picweek\Bundle\UserBundle\Entity\User", inversedBy="comments", cascade={"remove"})
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+
 
     /**
      * Get id
@@ -74,26 +75,6 @@ class Comment
     }
 
     /**
-     * Set score
-     *
-     * @param integer $score
-     */
-    public function setScore($score)
-    {
-        $this->score = $score;
-    }
-
-    /**
-     * Get score
-     *
-     * @return integer
-     */
-    public function getScore()
-    {
-        return $this->score;
-    }
-
-    /**
      * Set place
      *
      * @param Picweek\Bundle\MainBundle\Entity\Picnic\Place $place
@@ -111,5 +92,25 @@ class Comment
     public function getPlace()
     {
         return $this->place;
+    }
+
+    /**
+     * Set user
+     *
+     * @param Picweek\Bundle\UserBundle\Entity\User $user
+     */
+    public function setUser(\Picweek\Bundle\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * Get user
+     *
+     * @return Picweek\Bundle\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

@@ -2,13 +2,15 @@
 
 namespace Picweek\Bundle\MainBundle\Entity\Picnic;
 
+use Picweek\Bundle\MainBundle\Entity\Picnic\Place\Comment;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Picweek\Bundle\MainBundle\Entity\Picnic\Place
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Picweek\Bundle\MainBundle\Entity\Picnic\PlaceRepository")
  */
 class Place
 {
@@ -90,7 +92,12 @@ class Place
     private $comments;
 
     /**
-     * Constructeur
+     * @ORM\OneToMany(targetEntity="\Picweek\Bundle\MainBundle\Entity\Picnic\Place\Note", mappedBy="place", cascade={"remove","persist"})
+     */
+    private $notes;
+
+    /**
+     * Constructor
      *
      */
     public function __construct()
@@ -293,9 +300,9 @@ class Place
     /**
      * Add comments
      *
-     * @param Picnic\Place\Comment $comments
+     * @param Picweek\Bundle\MainBundle\Entity\Picnic\Place\Comment $comments
      */
-    public function addComment(\Picnic\Place\Comment $comments)
+    public function addComment(Comment $comments)
     {
         $this->comments[] = $comments;
     }
@@ -320,4 +327,34 @@ class Place
         $this->comments = $comments;
     }
 
+    /**
+     * Convert to string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
+
+    /**
+     * Add notes
+     *
+     * @param Picweek\Bundle\MainBundle\Entity\Picnic\Place\Note $notes
+     */
+    public function addNote(\Picweek\Bundle\MainBundle\Entity\Picnic\Place\Note $notes)
+    {
+        $this->notes[] = $notes;
+    }
+
+    /**
+     * Get notes
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getNotes()
+    {
+        return $this->notes;
+    }
 }

@@ -33,6 +33,25 @@ class User extends BaseUser
 
 
     /**
+     * @ORM\OneToMany(targetEntity="\Picweek\Bundle\MainBundle\Entity\Picnic\Place\Comment", mappedBy="place", cascade={"remove","persist"})
+     */
+    private $comments;
+
+    /**
+     * @ORM\OneToMany(targetEntity="\Picweek\Bundle\MainBundle\Entity\Picnic\Place\Note", mappedBy="place", cascade={"remove","persist"})
+     */
+    private $notes;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->notes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * Get id
      *
      * @return integer
@@ -63,4 +82,44 @@ class User extends BaseUser
         return $this->location;
     }
 
+
+    /**
+     * Add comments
+     *
+     * @param Picweek\Bundle\MainBundle\Entity\Picnic\Place\Comment $comments
+     */
+    public function addComment(\Picweek\Bundle\MainBundle\Entity\Picnic\Place\Comment $comments)
+    {
+        $this->comments[] = $comments;
+    }
+
+    /**
+     * Get comments
+     *
+     * @return Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * Add notes
+     *
+     * @param Picweek\Bundle\MainBundle\Entity\Picnic\Place\Note $notes
+     */
+    public function addNote(\Picweek\Bundle\MainBundle\Entity\Picnic\Place\Note $notes)
+    {
+        $this->notes[] = $notes;
+    }
+
+    /**
+     * Get notes
+     *
+     * @return Doctrine\Common\Collections\Collection
+     */
+    public function getNotes()
+    {
+        return $this->notes;
+    }
 }

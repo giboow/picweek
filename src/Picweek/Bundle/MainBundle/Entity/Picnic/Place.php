@@ -92,6 +92,11 @@ class Place
     private $comments;
 
     /**
+     * @ORM\OneToMany(targetEntity="\Picweek\Bundle\MainBundle\Entity\Picnic\Place\Note", mappedBy="place", cascade={"remove","persist"})
+     */
+    private $notes;
+
+    /**
      * Constructor
      *
      */
@@ -332,4 +337,24 @@ class Place
         return $this->getName();
     }
 
+
+    /**
+     * Add notes
+     *
+     * @param Picweek\Bundle\MainBundle\Entity\Picnic\Place\Note $notes
+     */
+    public function addNote(\Picweek\Bundle\MainBundle\Entity\Picnic\Place\Note $notes)
+    {
+        $this->notes[] = $notes;
+    }
+
+    /**
+     * Get notes
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getNotes()
+    {
+        return $this->notes;
+    }
 }

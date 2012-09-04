@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity
  */
-class Comment
+class Note
 {
     /**
      * @var integer $id
@@ -23,16 +23,16 @@ class Comment
      */
     private $id;
 
+
     /**
-     * @var text $comment
+     * @var integer note
      *
-     * @ORM\Column(name="comment", type="text")
+     * @ORM\Column(name="note", type="integer")
      */
-    private $comment;
-
+    private $note;
 
     /**
-     * @ORM\ManyToOne(targetEntity="\Picweek\Bundle\MainBundle\Entity\Picnic\Place", inversedBy="comments", cascade={"remove"})
+     * @ORM\ManyToOne(targetEntity="\Picweek\Bundle\MainBundle\Entity\Picnic\Place", inversedBy="notes", cascade={"remove"})
      * @ORM\JoinColumn(name="place_id", referencedColumnName="id")
      */
     private $place;
@@ -43,7 +43,6 @@ class Comment
      */
     private $user;
 
-
     /**
      * Get id
      *
@@ -52,26 +51,6 @@ class Comment
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set comment
-     *
-     * @param text $comment
-     */
-    public function setComment($comment)
-    {
-        $this->comment = $comment;
-    }
-
-    /**
-     * Get comment
-     *
-     * @return text
-     */
-    public function getComment()
-    {
-        return $this->comment;
     }
 
     /**
@@ -92,6 +71,26 @@ class Comment
     public function getPlace()
     {
         return $this->place;
+    }
+
+    /**
+     * Set note
+     *
+     * @param integer $note
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+    }
+
+    /**
+     * Get note
+     *
+     * @return integer
+     */
+    public function getNote()
+    {
+        return $this->note;
     }
 
     /**
