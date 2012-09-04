@@ -351,7 +351,7 @@ class Place
     /**
      * Get notes
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return Doctrine\Common\Collections\Collection
      */
     public function getNotes()
     {
